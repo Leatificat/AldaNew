@@ -1,5 +1,7 @@
 package alda.linear;
 
+//ladidiadido
+
 public class MyALDAList<E>{
 
 
