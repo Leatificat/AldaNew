@@ -3,6 +3,7 @@ package alda.linear;
 //ladidiadido
 
 import java.util.NoSuchElementException;
+import java.util.Iterator;
 
 public class MyALDAList<E> implements ALDAList<E>{
 
@@ -16,6 +17,31 @@ public class MyALDAList<E> implements ALDAList<E>{
             this.data = data;
         }
     }
+// Start
+    public Iterator<E> iterator(){
+        return new MyIterator<E>();
+    }
+
+    public class MyIterator<T> implements Iterator<T>{
+
+        public boolean hasNext(){
+            return true;
+        }
+
+        public T next() {
+
+
+
+            return T;
+        }
+
+        public void remove(){
+
+
+        }
+    }
+
+    //Slut
 
     private Node<E> first;
     private Node<E> last;
