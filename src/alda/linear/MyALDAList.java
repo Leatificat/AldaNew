@@ -2,6 +2,8 @@ package alda.linear;
 
 //ladidiadido
 
+import java.util.NoSuchElementException;
+
 public class MyALDAList<E>{
 
 
@@ -114,7 +116,7 @@ public class MyALDAList<E>{
     public int indexOf(E element){
         int index = 0;
 //Kanske borde va annat exception, är inte säker
-        if(!contains(element)) throw new NullPointerException("No such element in list!");
+        if(!contains(element)) throw new NoSuchElementException("No such element in list!");
 
         for(Node<E> temp = first; temp!= null; temp=temp.next){
 
