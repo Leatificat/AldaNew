@@ -21,6 +21,21 @@ public class MyALDAList<E>{
             first = new Node<>(data);
             last = first;
         }
+        else {
+            last.next = new Node<>(data);
+            last = last.next;
+        }
+    }
+
+    public void add(int i, E data){
+        if(i>)
+    }
+
+    public int size(){
+        int value = 0;
+        if(first == null)
+            return value;
+        while()
     }
 
 }
