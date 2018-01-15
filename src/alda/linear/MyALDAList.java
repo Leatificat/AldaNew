@@ -51,6 +51,30 @@ public class MyALDAList<E>{
         }
     }
 
+    public E remove(int index){
+        if(index ==0){
+            first = first.next;
+        }
+        Node<E> temp = first;
+        Node<E> temp2;
+        for(int c = 0; c < size(); c++){
+            if(c == index-1){
+                if(temp.next==last){
+                    temp2 = temp.next;
+                    temp.next = null;
+                    last = temp;
+                    return temp2.data;
+                }
+                else{
+                    temp2 = temp.next;
+                    temp.next = temp.next.next;
+                    return temp2.data;
+                }
+            }
+        }
+        return null;
+    }
+
     public E get(int index){
         Node<E> temp = first;
         for(int c = 0; c<=index;c++){
