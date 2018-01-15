@@ -75,6 +75,20 @@ public class MyALDAList<E>{
         return null;
     }
 
+    public boolean remove(E element){
+
+        int index = -1;
+        index = indexOf(element);
+
+        if(index <0){
+            return false;
+        } else {
+            remove(index);
+            return true;
+        }
+
+    }
+
     public E get(int index){
         Node<E> temp = first;
         for(int c = 0; c<=index;c++){
