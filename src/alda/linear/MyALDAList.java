@@ -16,6 +16,7 @@ public class MyALDAList<E> implements ALDAList<E>{
             this.data = data;
         }
 
+
     }
 // Start
     public Iterator<E> iterator(){
@@ -67,8 +68,16 @@ public class MyALDAList<E> implements ALDAList<E>{
 
     public void add(int i, E data){
         //kanske fungerar
-        if(i==0 && first == null)
+        if(first == null){
             add(data);
+        }
+
+        else if(i == 0){
+            Node<E> node = new Node<>(data);
+            node.next = first;
+            first = node;
+        }
+
         else if(i<size()){
             Node<E> temp = first;
             for(int c = 0; c<i+1; c++){
@@ -131,6 +140,7 @@ public class MyALDAList<E> implements ALDAList<E>{
     public E get(int index){
         Node<E> temp = first;
         if(first == null)throw new IndexOutOfBoundsException();
+        if(index < 0  || index >= size())throw new IndexOutOfBoundsException();
         for(int c = 0; c<=index;c++){
             if(c == index){
                 return temp.data;
@@ -172,7 +182,7 @@ public class MyALDAList<E> implements ALDAList<E>{
     }
 
     public int size(){
-        int value = 1;
+        int value = 0;
         if(first == null) {
             return value;
         }
@@ -181,7 +191,7 @@ public class MyALDAList<E> implements ALDAList<E>{
 
             value++;
         }
-        return value;
+        return ++value;
     }
 
     public String toString(){
@@ -197,5 +207,6 @@ public class MyALDAList<E> implements ALDAList<E>{
 
         return "[" + values + "]";
     }
+
 
 }
