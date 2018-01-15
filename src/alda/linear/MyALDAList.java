@@ -4,7 +4,7 @@ package alda.linear;
 
 import java.util.NoSuchElementException;
 
-public class MyALDAList<E>{
+public class MyALDAList<E> implements ALDAList<E>{
 
 
 
