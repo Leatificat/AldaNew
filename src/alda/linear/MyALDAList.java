@@ -46,6 +46,11 @@ public class MyALDAList<E>{
         }
     }
 
+    public void clear(){
+        first = null;
+        last = null;
+    }
+
     public int size(){
         int value = 0;
         if(first == null)
