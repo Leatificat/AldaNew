@@ -19,7 +19,9 @@ public class MyALDAList<E> implements ALDAList<E>{
     }
 // Start
     public Iterator<E> iterator(){
-        return new MyIterator<E>();
+
+        MyIterator<E> it =  new MyIterator<E>();
+        return it;
     }
 
     public class MyIterator<T> implements Iterator<E>{
@@ -35,7 +37,11 @@ public class MyALDAList<E> implements ALDAList<E>{
 
         @Override
         public E next() {
-            return node.data;
+            if(!hasNext()){throw new IndexOutOfBoundsException();
+
+            }else{
+                return node.data;
+            }
         }
     }
 
@@ -82,6 +88,10 @@ public class MyALDAList<E> implements ALDAList<E>{
     }
 
     public E remove(int index){
+        if(first == null){
+            throw new IndexOutOfBoundsException();
+        }
+
         if(index ==0){
             first = first.next;
         }
@@ -120,6 +130,7 @@ public class MyALDAList<E> implements ALDAList<E>{
 
     public E get(int index){
         Node<E> temp = first;
+        if(first == null)throw new IndexOutOfBoundsException();
         for(int c = 0; c<=index;c++){
             if(c == index){
                 return temp.data;
@@ -161,14 +172,30 @@ public class MyALDAList<E> implements ALDAList<E>{
     }
 
     public int size(){
-        int value = 0;
-        if(first == null)
+        int value = 1;
+        if(first == null) {
             return value;
+        }
+
         for(Node<E> temp = first; temp.next != null; temp = temp.next){
+
             value++;
         }
         return value;
     }
 
+    public String toString(){
+
+        String values ="";
+        for(Node<E> temp = first; temp!= null; temp=temp.next){
+            values = values+temp.data;
+            if(temp.next!=null){
+                values = values + ", ";
+            }
+
+        }
+
+        return "[" + values + "]";
+    }
 
 }
