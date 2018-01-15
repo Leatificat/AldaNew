@@ -73,6 +73,21 @@ public class MyALDAList<E>{
         return false;
     }
 
+    public int indexOf(E element){
+        int index = 0;
+//Kanske borde va annat exception, är inte säker
+        if(!contains(element)) throw new NullPointerException("No such element in list!");
+
+        for(Node<E> temp = first; temp!= null; temp=temp.next){
+
+            if(temp.data==element || temp.data.equals(element)){
+                return index;
+            }
+            index++;
+        }
+        return index;
+    }
+
     public void clear(){
         first = null;
         last = null;
