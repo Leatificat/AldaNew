@@ -29,10 +29,12 @@ public class MyALDAList<E>{
 
     public void add(int i, E data){
         //kanske fungerar
-        if(i<size()){
+        if(i==0 && first == null)
+            add(data);
+        else if(i<size()){
             Node<E> temp = first;
-            for(int c = 0; c==i; c++){
-                if(c==i){
+            for(int c = 0; c<i+1; c++){
+                if(c==i-1){
                     Node<E> node = new Node<>(data);
                     node.next = temp.next;
                     temp.next = node;
@@ -40,7 +42,6 @@ public class MyALDAList<E>{
                 else{
                     temp = temp.next;
                 }
-
             }
         }
     }
