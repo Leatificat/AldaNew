@@ -28,14 +28,31 @@ public class MyALDAList<E>{
     }
 
     public void add(int i, E data){
-        if(i>)
+        //kanske fungerar
+        if(i<size()){
+            Node<E> temp = first;
+            for(int c = 0; c==i; c++){
+                if(c==i){
+                    Node<E> node = new Node<>(data);
+                    node.next = temp.next;
+                    temp.next = node;
+                }
+                else{
+                    temp = temp.next;
+                }
+
+            }
+        }
     }
 
     public int size(){
         int value = 0;
         if(first == null)
             return value;
-        while()
+        for(Node<E> temp = first; temp.next != null; temp = temp.next){
+            value++;
+        }
+        return value;
     }
 
 }
