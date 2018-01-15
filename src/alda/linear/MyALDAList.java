@@ -98,29 +98,43 @@ public class MyALDAList<E> implements ALDAList<E>{
     }
 
     public E remove(int index){
+
+        Node<E> temp = first;
+        Node<E> temp2;
+        if(index < 0 || index >= size()){
+            throw new IndexOutOfBoundsException();
+        }
+
         if(first == null){
             throw new IndexOutOfBoundsException();
         }
 
         if(index ==0){
             first = first.next;
+            return temp.data;
+
         }
-        Node<E> temp = first;
-        Node<E> temp2;
         for(int c = 0; c < size(); c++){
-            if(c == index-1){
+            System.out.println(toString());
+            if(c == index -1){
                 if(temp.next==last){
                     temp2 = temp.next;
                     temp.next = null;
                     last = temp;
+                    System.out.println(toString()+ "ii");
                     return temp2.data;
                 }
                 else{
                     temp2 = temp.next;
                     temp.next = temp.next.next;
+                    System.out.println(toString()+ "iii");
                     return temp2.data;
                 }
             }
+            else{
+                temp = temp.next;
+            }
+
         }
         return null;
     }
