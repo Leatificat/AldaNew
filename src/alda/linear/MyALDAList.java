@@ -77,14 +77,13 @@ public class MyALDAList<E>{
 
     public boolean remove(E element){
 
-        int index = -1;
-        index = indexOf(element);
+        int index = indexOf(element);
 
-        if(index <0){
-            return false;
-        } else {
+        if(index >=0){
             remove(index);
             return true;
+        } else {
+            return false;
         }
 
     }
