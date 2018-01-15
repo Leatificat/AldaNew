@@ -8,7 +8,7 @@ public class MyALDAList<E>{
 
     private static class Node<E>{
         E data;
-        Node next;
+        Node<E> next;
 
         public Node(E data){
             this.data = data;
@@ -46,6 +46,31 @@ public class MyALDAList<E>{
                 }
             }
         }
+        else{
+            add(data);
+        }
+    }
+
+    public E get(int index){
+        Node<E> temp = first;
+        for(int c = 0; c<=index;c++){
+            if(c == index){
+                return temp.data;
+            }
+            else{
+                temp = temp.next;
+            }
+        }
+        return null;
+    }
+
+    public boolean contains(E element){
+        for(Node<E> temp = first; temp!= null; temp=temp.next){
+            if(temp.data==element || temp.data.equals(element)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void clear(){
