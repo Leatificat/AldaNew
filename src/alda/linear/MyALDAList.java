@@ -1,5 +1,6 @@
 package alda.linear;
 
+//kommentaar
 
 import java.util.NoSuchElementException;
 import java.util.Iterator;
