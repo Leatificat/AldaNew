@@ -23,11 +23,11 @@ public class MyALDAList<E> implements ALDAList<E>{
 // Start
     public Iterator<E> iterator(){
 
-        ListIterator<E> it =  new ListIterator<E>();
+        MyIterator<E> it =  new MyIterator<E>();
         return it;
     }
 
-    /*public class MyIterator<T> implements Iterator<E>{
+    public class MyIterator<T> implements Iterator<E>{
         private Node<E> node = first;
 
         @Override
@@ -46,7 +46,7 @@ public class MyALDAList<E> implements ALDAList<E>{
                 return node.data;
             }
         }
-    }*/
+    }
 
     //Slut
 
