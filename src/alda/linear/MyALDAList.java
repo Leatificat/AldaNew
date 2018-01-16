@@ -179,7 +179,7 @@ public class MyALDAList<E> implements ALDAList<E>{
     public int indexOf(E element){
         int index = 0;
 //Kanske borde va annat exception, är inte säker
-        if(!contains(element)) throw new NoSuchElementException("No such element in list!");
+        if(!contains(element)) return -1;
 
         for(Node<E> temp = first; temp!= null; temp=temp.next){
 
