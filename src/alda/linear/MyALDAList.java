@@ -22,11 +22,11 @@ public class MyALDAList<E> implements ALDAList<E>{
 // Start
     public Iterator<E> iterator(){
 
-        MyIterator<E> it =  new MyIterator<E>();
+        ListIterator<E> it =  new ListIterator<E>();
         return it;
     }
 
-    public class MyIterator<T> implements Iterator<E>{
+    /*public class MyIterator<T> implements Iterator<E>{
         private Node<E> node = first;
 
         @Override
@@ -45,7 +45,7 @@ public class MyALDAList<E> implements ALDAList<E>{
                 return node.data;
             }
         }
-    }
+    }*/
 
     //Slut
 
@@ -105,10 +105,6 @@ public class MyALDAList<E> implements ALDAList<E>{
             throw new IndexOutOfBoundsException();
         }
 
-        if(first == null){
-            throw new IndexOutOfBoundsException();
-        }
-
         if(index ==0){
             first = first.next;
             return temp.data;
@@ -140,9 +136,7 @@ public class MyALDAList<E> implements ALDAList<E>{
     }
 
     public boolean remove(E element){
-
         int index = indexOf(element);
-
         if(index >=0){
             remove(index);
             return true;
