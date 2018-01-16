@@ -1,6 +1,7 @@
+//Sebastian Söderblom sesd1880 och Hampus Larsson laha2282
 package alda.linear;
 
-//kommentaar
+
 
 import java.util.NoSuchElementException;
 import java.util.Iterator;
@@ -111,19 +112,16 @@ public class MyALDAList<E> implements ALDAList<E>{
 
         }
         for(int c = 0; c < size(); c++){
-            System.out.println(toString());
             if(c == index -1){
                 if(temp.next==last){
                     temp2 = temp.next;
                     temp.next = null;
                     last = temp;
-                    System.out.println(toString()+ "ii");
                     return temp2.data;
                 }
                 else{
                     temp2 = temp.next;
                     temp.next = temp.next.next;
-                    System.out.println(toString()+ "iii");
                     return temp2.data;
                 }
             }
@@ -172,7 +170,6 @@ public class MyALDAList<E> implements ALDAList<E>{
 
     public int indexOf(E element){
         int index = 0;
-//Kanske borde va annat exception, är inte säker
         if(!contains(element)) return -1;
 
         for(Node<E> temp = first; temp!= null; temp=temp.next){
@@ -197,7 +194,6 @@ public class MyALDAList<E> implements ALDAList<E>{
         }
 
         for(Node<E> temp = first; temp.next != null; temp = temp.next){
-
             value++;
         }
         return ++value;
