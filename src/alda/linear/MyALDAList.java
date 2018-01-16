@@ -28,11 +28,16 @@ public class MyALDAList<E> implements ALDAList<E>{
     }
 
     public class MyIterator<T> implements Iterator<E>{
-        private Node<E> node = first;
+        private Node<E> node = null;
 
         @Override
         public boolean hasNext() {
-            if(node.next ==null){
+
+            if(size()!=0 && node == null){
+                System.out.println("32");
+                return true;
+            }
+            else if(node == last){
                 return false;
             }
             return true;
@@ -40,9 +45,16 @@ public class MyALDAList<E> implements ALDAList<E>{
 
         @Override
         public E next() {
-            if(!hasNext()){throw new IndexOutOfBoundsException();
+            System.out.println("12");
+            if(node == null){
+                node = first;
+                System.out.println(node.data);
+                return node.data;
+            }
 
-            }else{
+            else{
+                node=node.next;
+                System.out.println(node.data);
                 return node.data;
             }
         }
