@@ -1,4 +1,4 @@
-//Sebastian Söderblom sesd1880 och Hampus Larsson laha2282
+//Sebastian Söderblom sesd1880 och Hampus Larsson hala2282
 package alda.linear;
 
 
@@ -103,12 +103,13 @@ public class MyALDAList<E> implements ALDAList<E>{
 
     public void add(int i, E data){
         //kanske fungerar
+        if(i<0 || i>size()) throw new IndexOutOfBoundsException();
         if(first == null){
             add(data);
         }
-        if(i < 0 || i > size()){
-            throw new IndexOutOfBoundsException();
-        }
+       // if(i < 0 || i > size()){
+         //   throw new IndexOutOfBoundsException();
+        //}
         else if(i == 0){
             Node<E> node = new Node<>(data);
             node.next = first;
