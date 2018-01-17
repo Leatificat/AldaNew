@@ -46,10 +46,9 @@ public class MyALDAList<E> implements ALDAList<E>{
 
         @Override
         public E next() {
-            System.out.println("12");
+
             if(node == null && size() !=0){
                 node = first;
-                System.out.println(node.data);
                 removable = true;
                 return node.data;
             }
@@ -59,24 +58,20 @@ public class MyALDAList<E> implements ALDAList<E>{
             else{
                 lastNode = node;
                 node=node.next;
-                System.out.println(node.data+"1");
                 removable = true;
                 return node.data;
             }
 
         }
         public void remove(){
-            System.out.println(removable);
             if(!removable)throw new IllegalStateException();
 
             if(lastNode == null){
                 first = node.next;
-                System.out.println(first.data+"4");
                 lastNode = null;
                 node = null;
             }
             else{
-                System.out.println(lastNode.data+ "3");
                 lastNode.next = lastNode.next.next;
                 node=lastNode;
             }
@@ -168,13 +163,27 @@ public class MyALDAList<E> implements ALDAList<E>{
     }
 
     public boolean remove(E element){
-        int index = indexOf(element);
-        if(index >=0){
-            remove(index);
+        if(first.data ==element || first.data.equals(element)){
+            first = first.next;
             return true;
-        } else {
-            return false;
         }
+
+        for(Node<E> temp = first; temp.next!= null; temp=temp.next){
+            if(temp.next.data==element || temp.next.data.equals(element)){
+                if(temp.next == last){
+                    last = temp;
+                    temp.next = null;
+                    System.out.println(toString());
+                    return true;
+                }
+                else{
+                    temp.next = temp.next.next;
+                    return true;
+                }
+
+            }
+        }
+        return false;
 
     }
 
@@ -184,8 +193,6 @@ public class MyALDAList<E> implements ALDAList<E>{
         if(index < 0  || index >= size())throw new IndexOutOfBoundsException();
         for(int c = 0; c<=index;c++){
             if(c == index){
-                System.out.println(toString());
-                System.out.println(temp.data+"45");
                 return temp.data;
             }
             else{
