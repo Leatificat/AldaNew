@@ -102,9 +102,6 @@ public class MyALDAList<E> implements ALDAList<E>{
         if(first == null){
             add(data);
         }
-       // if(i < 0 || i > size()){
-         //   throw new IndexOutOfBoundsException();
-        //}
         else if(i == 0){
             Node<E> node = new Node<>(data);
             node.next = first;
@@ -113,15 +110,22 @@ public class MyALDAList<E> implements ALDAList<E>{
         else if(i<=size()){
             Node<E> temp = first;
             for(int c = 0; c<i+1; c++){
+
                 if(c==i-1){
                     Node<E> node = new Node<>(data);
+                    if(temp.next==null){
+                        last=node;
+                    }
                     node.next = temp.next;
                     temp.next = node;
+
                 }
                 else{
                     temp = temp.next;
-                }
+             }
             }
+
+
         }
         else{
             add(data);
@@ -174,7 +178,7 @@ public class MyALDAList<E> implements ALDAList<E>{
                 if(temp.next == last){
                     last = temp;
                     temp.next = null;
-                    System.out.println(toString());
+
                     return true;
                 }
                 else{
