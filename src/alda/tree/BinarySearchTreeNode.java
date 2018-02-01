@@ -31,23 +31,27 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     }
 
     public boolean add(T data) {
-//Finns säkert ett snyggare sätt att göra denna!
+
         if(data==null){
             return false;
         }else if(this.data.compareTo(data)==0){
-            return false; //Vet inte hur man skulle göra med dubletter
+            return false;
+
+        }else if(this.data.compareTo(data)<0 && this.right==null){
+            right = new BinarySearchTreeNode<T>(data);
+            return true;
+
 
         }else if(this.data.compareTo(data)<0 && this.right!=null){
             return this.right.add(data);
 
-        }else if(this.data.compareTo(data)<0 && this.right==null){
-            right = new BinarySearchTreeNode<T>(data);
+        }else if(this.data.compareTo(data)>0 && this.left==null){
+            left = new BinarySearchTreeNode<T>(data);
+            return true;
+
 
         }else if(this.data.compareTo(data)>0 && this.left!=null){
             return this.left.add(data);
-
-        }else if(this.data.compareTo(data)<0 && this.left==null){
-            left = new BinarySearchTreeNode<T>(data);
 
         }
         return false;
@@ -75,10 +79,10 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
         }else if(this.data.compareTo(data)==0){
             return true;
 
-        }else if(this.data.compareTo(data)<0){
+        }else if(this.data.compareTo(data)<0 && right != null){
             return this.right.contains(data);
 
-        }else if(this.data.compareTo(data)>0){
+        }else if(this.data.compareTo(data)>0 && left!= null){
             return this.left.contains(data);
 
         }

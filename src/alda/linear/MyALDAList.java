@@ -1,4 +1,4 @@
-//Sebastian Söderblom sesd1880 och Hampus Larsson hala2282
+//Sebastian Söderblom sesd1880@student.dsv.su.se och Hampus Larsson hala2282@student.dsv.su.se
 package alda.linear;
 
 
