@@ -16,7 +16,7 @@ package alda.tree;
  *
  * @param <T>
  */
-@SuppressWarnings("unused") // Denna rad ska plockas bort. Den finns här
+// Denna rad ska plockas bort. Den finns här
 // tillfälligt för att vi inte ska tro att det är
 // fel i koden. Varningar ska normalt inte döljas på
 // detta sätt, de är (oftast) fel som ska fixas.
@@ -37,21 +37,21 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
         }else if(this.data.compareTo(data)==0){
             return false;
 
-        }else if(this.data.compareTo(data)<0 && this.right==null){
+        }else if(data.compareTo(this.data)>0 && this.right==null){
             right = new BinarySearchTreeNode<T>(data);
             return true;
 
 
-        }else if(this.data.compareTo(data)<0 && this.right!=null){
-            return this.right.add(data);
+        }else if(data.compareTo(this.data)>0 && this.right!=null){
+            return right.add(data);
 
-        }else if(this.data.compareTo(data)>0 && this.left==null){
+        }else if(data.compareTo(this.data)<0 && this.left==null){
             left = new BinarySearchTreeNode<T>(data);
             return true;
 
 
-        }else if(this.data.compareTo(data)>0 && this.left!=null){
-            return this.left.add(data);
+        }else if(data.compareTo(this.data)<0 && this.left!=null){
+            return left.add(data);
 
         }
         return false;
@@ -65,16 +65,52 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
         return this.data;
     }
 
+    private T findMax(){
+
+        if(this.right!= null){
+            return this.right.findMax();
+        }
+        return this.data;
+    }
+
     public BinarySearchTreeNode<T> remove(T data) {
 
 
+        if(data.compareTo(this.data)<0 && left!= null){
+            left = left.remove(data);
 
+        }else if(data.compareTo(this.data)>0 && left!=null){
+            right = right.remove(data);
+
+        }else if(data.compareTo(this.data) == 0){
+
+
+            if(left!=null){
+
+                this.data = left.findMax();
+                left = left.remove(this.data);
+
+            }else if(right != null){
+
+                this.data = right.findMin();
+                right = right.remove(this.data);
+            }else{
+                return null;
+            }
+
+
+
+        }
 
         return this;
+
+
+
+
     }
 
     public boolean contains(T data) {
-        if(this.data==null){
+        if(data==null){
             return false;
         }else if(this.data.compareTo(data)==0){
             return true;
@@ -92,14 +128,59 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     }
 
     public int size() {
-        return 0;
+
+        int size = 1;
+        if( left != null){
+
+            size += left.size();
+        }
+        if(right != null){
+            size += right.size();
+
+        }
+
+        return size;
+
     }
 
     public int depth() {
-        return -1;
+        if (left == null && right != null) {
+
+            return 1 + right.depth();
+
+        } else if (right == null && left != null) {
+
+            return 1 + left.depth();
+
+        } else if (left == null && right == null){
+
+            return 0;
+
+        }else{
+            return 1 + left.depth() + right.depth();
+        }
     }
 
     public String toString() {
-        return "";
+
+        if (left == null && right != null) {
+
+            return data + ", " + right.toString();
+
+        } else if (right == null && left != null) {
+
+            return left.toString() + ", " + data;
+
+        } else if (left == null && right == null){
+
+            return data.toString();
+
+        }else{
+            return left.toString() + ", " + data + ", " + right.toString();
+        }
+
+
+
     }
+
 }
