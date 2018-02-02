@@ -1,3 +1,4 @@
+//Sebastian Söderblom sesd1880 och Hampus Larsson hala2282
 package alda.tree;
 
 /**
@@ -79,7 +80,7 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
         if(data.compareTo(this.data)<0 && left!= null){
             left = left.remove(data);
 
-        }else if(data.compareTo(this.data)>0 && left!=null){
+        }else if(data.compareTo(this.data)>0 && right!=null){
             right = right.remove(data);
 
         }else if(data.compareTo(this.data) == 0){
